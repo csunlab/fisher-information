@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, 2015, “Using Fisher Information In Big Data” 
-(stored on arXiv, URL will be updated when finalized)
+Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, “USING FISHER INFORMATION IN BIG DATA.” 
+(URL will be updated when finalized)
 """
 
 import csv
+import pandas as pd 
+
+
 import math
+
 import matplotlib.pyplot as plt
 
 
@@ -20,6 +24,10 @@ def FI(f_name,step,step_1):
             
     out.close()
     
+    
+    
+    
+    
     Data_num=[]
     Time=[]
     
@@ -32,9 +40,12 @@ def FI(f_name,step,step_1):
             else:
                 temp.append(float(row[i]))
         Data_num.append(temp)
+        
+#    print Time
+#    print Data_num
     
     
-    out=open('sost.csv','rb')
+    out=open('{}_sost.csv'.format(f_name),'rb')
     data=csv.reader(out)
     Data=[]
         
@@ -48,35 +59,52 @@ def FI(f_name,step,step_1):
     for i in Data[0]:
         sost.append(eval(i))
         
-
+#    print sost
     
     FI_final=[]
     k_init=[]
     for i in range(0,len(Data_num),step_1):
         
         Data_win=Data_num[i:i+step]
+        win_number=i
+#        if win_number==0:
+#            print Data_win , len(Data_win)
        
         if len(Data_win)==step:
             Bin=[]
-            for i in Data_win:
+            for m in range(len( Data_win)):
                 Bin_temp=[]
                 
-                for j in Data_win:
-                    if i==j:
+                for n in range(len( Data_win)):
+                    if m==n:
                         Bin_temp.append('I')
                     else:
                         Bin_temp_1=[]
-                        for k in range(len(j)):
-                            if (abs(i[k]-j[k]))<=sost[k]:
+                        
+                        
+                        
+                        for k in range(len(Data_win[n])):
+                            if (abs(Data_win[m][k]-Data_win[n][k]))<=sost[k]:
                                 Bin_temp_1.append(1)
                             else:
                                 Bin_temp_1.append(0)
                                 
                         Bin_temp.append(sum(Bin_temp_1))
                         
-                Bin.append(Bin_temp)
+                    
                 
+                        
+                Bin.append(Bin_temp)
             
+            
+#            df=pd.DataFrame(Bin)
+#            
+#            
+#            
+#           
+#            
+#            df.to_csv('bin_{}.csv'.format(i))    
+#            
             FI=[]
             for tl in range(1,101):
                 tl1=len(sost)*float(tl)/100
@@ -94,8 +122,8 @@ def FI(f_name,step,step_1):
                         Bin_1.append(Bin_1_temp)
                         Bin_2.extend(Bin_1_temp)
                     
-               
-                
+#                if win_number==0:
+#                    print Bin_1 , tl
                 prob=[0]
                 for i in Bin_1:
                     prob.append(float(len(i))/len(Bin_2))
@@ -126,6 +154,8 @@ def FI(f_name,step,step_1):
             FI_final.append(FI)
   
         
+    if len(k_init)==0:
+        k_init.append(0)
     for i in range(0,len(FI_final)):
         FI_final[i].append(float(sum(FI_final[i][min(k_init):len(FI_final[i])]))/len(FI_final[i][min(k_init):len(FI_final[i])]))
         FI_final[i].append(Time[(i*step_1+step)-1])
@@ -139,7 +169,7 @@ def FI(f_name,step,step_1):
     
     plt.plot(range(step,len(FI_final)+step),[i[-2] for i in FI_final ],
     'b',label='FI')
-    plt.ylim(0,8)
+    plt.ylim(0,8.5)
     plt.ylabel('Fisher Information')
     plt.xlabel('Time')
     plt.tight_layout()
