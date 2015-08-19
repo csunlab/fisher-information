@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, 2015, “Using Fisher Information In Big Data” 
-(stored on arXiv, URL will be updated when finalized)
+Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, “USING FISHER INFORMATION IN BIG DATA.” 
+(URL will be updated when finalized)
 """
 import csv
 import matplotlib.pyplot as plt
 
-def FI_smooth(f_name,step,step_win):
+def FI_smooth(f_name,step,step_win,xtick_step):
     out=open('FI.csv','rb')
     data=csv.reader(out)
     Data=[]
@@ -36,12 +36,13 @@ def FI_smooth(f_name,step,step_win):
     plt.plot(range(step_win,len(FI_smth)+step_win),FI_smth,'r',label='Smoothed')
     plt.xlabel('Time Step')
     plt.ylabel('Fisher Information')
-    plt.xticks(range(step_win,len(FI_smth)+step_win,5),
-                [time[i] for i in range(0,len(FI_smth),5)],rotation=45)
+    plt.xticks(range(step_win,len(FI_smth)+step_win,xtick_step),
+                [time[i] for i in range(0,len(FI_smth),xtick_step)],rotation=75)
     plt.legend()
     plt.tight_layout()
     plt.savefig(f_name+'FI_'+'.pdf')
     plt.savefig(f_name+'FI_'+'.png',dpi=1000)
+    plt.close('all')
     
     
     out=open('FI.csv','rb')
