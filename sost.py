@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, 2015, “Using Fisher Information In Big Data” 
-(stored on arXiv, URL will be updated when finalized)
+Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, “USING FISHER INFORMATION IN BIG DATA.” 
+(URL will be updated when finalized)
 """
 
 
@@ -62,7 +62,7 @@ def SOST(f_name,s_for_sd):
     
     df_sos=pd.DataFrame(sos)
     df_sos=df_sos.transpose()
-    df_sos.to_csv('sost.csv',index=False,header=False)
+    df_sos.to_csv('{}_sost.csv'.format(f_name),index=False,header=False)
    
 
 
