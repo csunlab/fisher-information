@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, “USING FISHER INFORMATION IN BIG DATA.” 
 (URL will be updated when finalized)
@@ -35,8 +36,15 @@ def FI_smooth(f_name,step,step_win,xtick_step):
     plt.plot(range(step_win,len(FI_smth)+step_win),FI_smth,'r',label='Smoothed')
     plt.xlabel('Time Step')
     plt.ylabel('Fisher Information')
-    plt.xticks(range(step_win,len(FI_smth)+step_win,xtick_step),
+    
+    if xtick_step!='def':
+        plt.xticks(range(step_win,len(FI_smth)+step_win,xtick_step),
                 [time[i] for i in range(0,len(FI_smth),xtick_step)],rotation=75)
+                
+    else:
+        plt.xticks(range(step_win,len(FI_smth)+step_win,3),
+                [time[i] for i in range(0,len(FI_smth),3)],rotation=75)
+        
     plt.legend()
     plt.tight_layout()
     plt.savefig(f_name+'FI_'+'.pdf')
@@ -67,8 +75,3 @@ def FI_smooth(f_name,step,step_win,xtick_step):
         new.writerow(data_temp)
         
     out.close()
-    
-
-
-
-    
