@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, “USING FISHER INFORMATION IN BIG DATA.” 
 (URL will be updated when finalized)
@@ -14,7 +15,11 @@ f_name=raw_input('enter file name-')
 w_size=int(input('enter window size-'))
 w_incre=int(input('enter window increment-'))
 sm_step=int(input('enter step for block average for smoothing of the FI-'))
-xtick_step=int(input('enter step for xticks-'))
+X_tick=raw_input('Provide step for xticks(Y)-')
+if X_tick.upper()=='Y':
+    xtick_step=int(input('enter step for xticks-'))
+else:
+    xtick_step='def'
 def main(f_name,w_size,w_incre,xtick_step):
     
     if raw_input('''Want to use default size of state? enter Y 
