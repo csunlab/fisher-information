@@ -1,6 +1,6 @@
 """
-Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, “Using Fisher Information In Big Data”, available on arXiv at http://arxiv.org/abs/1507.00389
-
+Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, “Using Fisher Information In Big Data”, 
+available on arXiv at http://arxiv.org/abs/1507.00389
 """
 
 import csv
