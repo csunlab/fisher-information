@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
-"""
-Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, “Using Fisher Information In Big Data”, 
+'''
+Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, “Using Fisher Information in Big Data”,
 available on arXiv at http://arxiv.org/abs/1507.00389
+'''
 
-"""
 import csv
 import matplotlib.pyplot as plt
+
 
 def FI_smooth(f_name,step,step_win,xtick_step):
     out=open('FI.csv','rb')
