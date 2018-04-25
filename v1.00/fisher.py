@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
-'''
-Citation: N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, “Using Fisher Information in Big Data”,
-available on arXiv at http://arxiv.org/abs/1507.00389
-'''
+"""
+N. Ahmad, S. Derrible, T. Eason, and H. Cabezas, 2016, “Using Fisher information to track stability in multivariate systems”,
+Royal Society Open Science, 3:160582, DOI: 10.1098/rsos.160582
+"""
 
 import csv
 import pandas as pd 
 import math
 import matplotlib.pyplot as plt
-
 
 def FI(f_name,step,step_1):
     
