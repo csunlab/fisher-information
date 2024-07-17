@@ -18,9 +18,6 @@ def SOST(f_name,s_for_sd):
             
     out.close()
     
-   
-    
-    
     Data_num=[]
     
     for row in Data:
@@ -32,8 +29,6 @@ def SOST(f_name,s_for_sd):
                 temp.append(float(row[i]))
         Data_num.append(temp)
         
-   
-    
     df=pd.DataFrame(Data_num)
     
     sos=[]
@@ -55,8 +50,6 @@ def SOST(f_name,s_for_sd):
             sos.append(min(sos_temp)*2)
         
         
-  
-    
     df_sos=pd.DataFrame(sos)
     df_sos=df_sos.transpose()
     df_sos.to_csv('{}_sost.csv'.format(f_name),index=False,header=False)

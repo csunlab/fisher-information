@@ -29,9 +29,7 @@ def main(f_name,w_size,w_incre,xtick_step):
     
     from smooth import FI_smooth
     FI_smooth(f_name,sm_step,w_size,xtick_step)
-    
-    
 
 main(f_name,w_size,w_incre,xtick_step)
 os.remove('FI.csv')
-print 'Total time taken-',datetime.datetime.now()-Time
+print ('Total time taken-',datetime.datetime.now()-Time)

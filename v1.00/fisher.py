@@ -20,10 +20,6 @@ def FI(f_name,step,step_1):
             
     out.close()
     
-    
-    
-    
-    
     Data_num=[]
     Time=[]
     
